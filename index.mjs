@@ -1,4 +1,4 @@
-const { addNote, listNotes, removeNote } = require("./notes");
+import { addNote, listNotes, removeNote } from "./notes.mjs";
 
 const cmd = process.argv[2];
 const arg1 = process.argv[3];

@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+import path from "path";
+import fs from "fs";
 const filePath = path.join("data", "notes.json");
 
 function saveNotes(notes) {
@@ -11,24 +11,22 @@ function loadNotes() {
   return JSON.parse(fs.readFileSync(filePath, "utf-8"));
 }
 
-function addNote(note) {
+export function addNote(note) {
   const notes = loadNotes();
   notes.push(note);
   saveNotes(notes);
 }
 
-function listNotes() {
+export function listNotes() {
   const notes = loadNotes();
   notes.forEach((n, i) => {
     console.log(`${i + 1}. ${n.title}:\n${n.body}`);
   });
 }
 
-function removeNote(index) {
+export function removeNote(index) {
   const notes = loadNotes();
   if (index >= notes.length) return;
   notes.splice(index, 1);
   saveNotes(notes);
 }
-
-module.exports = { addNote, listNotes, removeNote };
