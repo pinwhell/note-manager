@@ -24,4 +24,11 @@ function listNotes() {
   });
 }
 
-module.exports = { addNote, listNotes };
+function removeNote(index) {
+  const notes = loadNotes();
+  if (index >= notes.length) return;
+  notes.splice(index, 1);
+  saveNotes(notes);
+}
+
+module.exports = { addNote, listNotes, removeNote };
